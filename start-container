@@ -17,8 +17,6 @@ then
         fi
 fi
 
-# exec php-fpm &
-#exec httpd -DFOREGROUND "$@" &
 echo Starting php-fpm...
 php-fpm &
 echo Started php-fpm...
