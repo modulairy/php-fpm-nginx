@@ -1,0 +1,28 @@
+FROM php:8.2-fpm-alpine3.17
+
+RUN apk update && apk upgrade && apk add bash
+RUN apk add git
+
+# WORKDIR /var/www/localhost/htdocs
+
+# RUN apk add apache2 apache2-proxy
+
+
+# COPY httpd.conf /etc/apache2/
+
+# COPY index.php /var/www/localhost/htdocs
+
+RUN apk add nginx
+
+COPY nginx /etc/nginx
+COPY index.php /var/www/localhost/htdocs
+
+COPY start-container /usr/local/bin/
+
+RUN export PATH=$PATH:/bin:/usr/bin:/sbin:/usr/sbin
+
+EXPOSE 80
+EXPOSE 9000
+STOPSIGNAL SIGTERM
+
+CMD ["start-container"]
