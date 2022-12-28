@@ -12,6 +12,10 @@ COPY index.php /var/www/localhost/htdocs
 
 COPY start-container /usr/local/bin/
 
+RUN chmod +x /usr/local/bin/start-container
+
+RUN chmod 775 /var/www/localhost/htdocs
+
 RUN export PATH=$PATH:/bin:/usr/bin:/sbin:/usr/sbin
 
 EXPOSE 80
