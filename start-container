@@ -20,12 +20,12 @@ fi
 if [ ! -z "$INIT_SCRIPT" ]
 then
     cd /
-    echo "#!bin/bash" > initialize.sh
-    echo $INIT_SCRIPT >> initialize.sh 
+    echo $INIT_SCRIPT > initialize.sh 
     chmod +x /initialize.sh
 
     echo "running initialize script..."
-    exec $INIT_SCRIPT
+    bash /initialize.sh
+    cd /var/www
 fi
 
 echo Starting php-fpm...
