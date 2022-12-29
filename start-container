@@ -17,6 +17,17 @@ then
         fi
 fi
 
+if [ ! -z "$INIT_SCRIPT" ]
+then
+    cd /
+    echo "#!bin/bash" > initialize.sh
+    echo $INIT_SCRIPT >> initialize.sh 
+    chmod +x /initialize.sh
+
+    echo "running initialize script..."
+    exec $INIT_SCRIPT
+fi
+
 echo Starting php-fpm...
 php-fpm &
 echo Started php-fpm...
