@@ -11,8 +11,10 @@ COPY nginx /etc/nginx
 COPY index.php /var/www/localhost/htdocs
 
 COPY start-container /usr/local/bin/
-
 RUN chmod +x /usr/local/bin/start-container
+
+COPY php.ini /usr/local/etc/php/php.ini
+RUN chmod 644 /usr/local/etc/php/php.ini
 
 RUN chmod 775 /var/www/localhost/htdocs
 
