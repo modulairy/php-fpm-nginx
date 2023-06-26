@@ -2,6 +2,7 @@ FROM php:7.3-fpm-alpine3.14
 
 RUN apk update && apk upgrade && apk add bash
 RUN apk add git
+RUN locale-gen nl_NL.UTF-8
 
 WORKDIR /var/www/localhost/htdocs
 
