@@ -1,11 +1,11 @@
 FROM php:7.3-fpm
 RUN apt-get clean && apt-get update && apt-get install -y locales && apt-get install -y bash
-RUN apt install -y git
+RUN apt-get install -y git
 RUN locale-gen nl_NL.UTF-8 && dpkg-reconfigure locales
 
 WORKDIR /var/www/localhost/htdocs
 
-RUN apt install nginx
+RUN apt-get install -y nginx
 
 COPY nginx /etc/nginx
 COPY index.php /var/www/localhost/htdocs
