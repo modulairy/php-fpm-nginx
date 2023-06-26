@@ -1,12 +1,13 @@
-FROM php:7.3-fpm-alpine3.14
+FROM php:7.3-fpm
 
-RUN apk update && apk upgrade && apk add bash
-RUN apk add git
-RUN locale-gen nl_NL.UTF-8
+RUN apt update && apt upgrade && apt install bash
+RUN apt install git
+RUN apt install locales
+RUN locale-gen nl_NL.UTF-8 && dpkg-reconfigure locales
 
 WORKDIR /var/www/localhost/htdocs
 
-RUN apk add nginx
+RUN apt install nginx
 
 COPY nginx /etc/nginx
 COPY index.php /var/www/localhost/htdocs
