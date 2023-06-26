@@ -37,6 +37,6 @@ nginx -g 'daemon off;' &
 echo Started nginx
 
 
-wait -n
+wait
 echo Closing...
 exit $?
